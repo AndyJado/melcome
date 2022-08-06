@@ -134,7 +134,7 @@ impl Intention {
     pub fn originated_from(&mut self,itn: Self) {
         let orin = &mut self.origin;
         match orin {
-            Some(c) => panic!(),
+            Some(_c) => panic!(),
             None => {
                 *orin = Some(Rc::new(itn))
             },
