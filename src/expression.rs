@@ -13,7 +13,7 @@ pub struct Expression {
 
 impl Display for Expression {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Not finished yet:\n{self:?}")
+        write!(f, "Debug:\n{self:?}")
     }
 }
 
@@ -21,6 +21,7 @@ impl Display for Expression {
 pub trait Expressing:Display { 
     fn express(&mut self, obe: Box<dyn Observable>); 
     fn key(&self) -> Option<String>;
+    fn itn(&self) -> &Intention;
 }
 
 impl Expressing for Expression {
@@ -40,12 +41,16 @@ impl Expressing for Expression {
         }
     }
 
+
+    fn itn(&self) -> &Intention { &self.intention }
+
 }
 
 // digging the intention of the expressed 
 pub trait Digging:Expressing where Self: Sized {
     fn recover(&self) -> &Expression;
     fn sniff(&mut self, obe: Box<dyn Observable>) -> Expression;
+    fn join(&mut self, another: &impl Expressing);
 }
 
 // express an intention
@@ -77,9 +82,16 @@ impl Digging for Expression {
         itn.originated_from(sniffed);
 
         let itn2:Intention = self.intention.another();
-        println!("sniff self: {self:?}\n");
+        // println!("sniff self: {self:?}\n");
         Expression { intention: itn2, distortion: vec![None,], expressed: vec![obe,] }
     }
+
+    fn join(&mut self, another: &impl Expressing) {
+        let rhs = another.itn();
+        let lhs = &mut self.intention;
+        lhs.originated_from(rhs.clone())
+    }
+
 
 }
 
@@ -98,7 +110,7 @@ impl Crawling for Expression {
             None => return,
         }
         ctas.push(Some(deg));
-        println!("{deg:?}")
+        // println!("{deg:?}")
     }
 }
 
@@ -127,7 +139,7 @@ impl Intention {
                 *orin = Some(Rc::new(itn))
             },
         }
-        println!("originated_from: {self:?}")
+        // println!("originated_from: {self:?}")
     }
     
     pub fn new_from(self) -> Intention {

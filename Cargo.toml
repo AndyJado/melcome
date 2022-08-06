@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
-description = "Notate the distortion between the `Display`ed and its intention effortlessly. "
+description = "Explicitly notate the distortion between the `Display`ed and its intention effortlessly. "
 keywords = ["social"]
 categories = ["rust-patterns"]
 
