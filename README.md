@@ -1,4 +1,4 @@
-### Explicitly notate the distortion between the `Display`ed with its intention effortlessly. 
+## Explicitly notate the distortion between the `Display`ed with its intention effortlessly. 
 
 ---
 

@@ -1,12 +1,14 @@
 [package]
 name = "melcome"
-version = "0.1.0"
+version = "0.0.1"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 description = "Explicitly notate the distortion between the `Display`ed and its intention effortlessly. "
 keywords = ["social"]
 categories = ["rust-patterns"]
+repository = "https://github.com/AndyJado/melcome"
+homepage = "https://github.com/AndyJado/melcome"
 
 [badges]
 maintenance = { status = "actively-developed"}
